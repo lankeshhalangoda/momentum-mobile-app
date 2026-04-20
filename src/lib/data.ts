@@ -466,17 +466,32 @@ export const screenHero = {
 export const onboardingSlides = [
   {
     title: "Build momentum that compounds",
-    body: "Goals, deep work, and insights in a single premium flow — for people who move fast and think long-term.",
+    body: "Momentum combines planning, deep work, and progress signals in one focused system built for everyday execution.",
+    points: [
+      "Start each day with a clear readiness signal and practical next steps.",
+      "Track goals, streaks, and focus sessions without jumping between tools.",
+      "Stay consistent with polished flows designed for daily use.",
+    ],
     icon: "spark" as const,
   },
   {
     title: "Your data becomes your edge",
-    body: "Readiness, adaptive plans, and intelligent nudges — act with precision, not dashboard fatigue.",
+    body: "Turn your activity into decisions you can act on quickly, with context that stays simple and useful.",
+    points: [
+      "See trends in focus time, completed sessions, and weekly progress.",
+      "Use adaptive recommendations to reduce decision fatigue.",
+      "Spot what is helping your performance and repeat it.",
+    ],
     icon: "shield" as const,
   },
   {
     title: "Streaks that actually stick",
-    body: "Connect calendar and health when you’re ready. Explore the full prototype on your terms.",
+    body: "Build habits that hold through busy weeks, with structure that supports momentum over perfection.",
+    points: [
+      "Protect your streak with realistic daily plans.",
+      "Sync your rhythm across focus, goals, and community energy.",
+      "Enter the full experience and continue from where you left off.",
+    ],
     icon: "flame" as const,
   },
 ];

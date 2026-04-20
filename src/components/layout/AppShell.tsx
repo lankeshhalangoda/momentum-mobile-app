@@ -1,6 +1,5 @@
 "use client";
 
-import { useEffect } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import { usePathname } from "next/navigation";
 import { AppBrandHeader } from "@/components/brand/AppBrandHeader";
@@ -11,13 +10,6 @@ const ease = [0.16, 1, 0.3, 1] as const;
 
 export function AppShell({ children }: { children: React.ReactNode }) {
   const pathname = usePathname();
-
-  useEffect(() => {
-    console.log(
-      "%cMomentum\nDesigned & Developed by Lankesh Halangoda",
-      "color:#ffffff;font-size:16px;font-weight:700;line-height:1.35;",
-    );
-  }, []);
 
   return (
     <div

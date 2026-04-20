@@ -10,6 +10,7 @@ import { PeerBarCompare } from "@/components/charts/PeerBarCompare";
 import { SegmentedGoalRings } from "@/components/charts/SegmentedGoalRings";
 import { EmptyState } from "@/components/ui/EmptyState";
 import { GlassCard } from "@/components/ui/GlassCard";
+import { ProgressBar } from "@/components/ui/ProgressBar";
 import { Skeleton } from "@/components/ui/Skeleton";
 import { AnimatedCounter } from "@/components/ui/AnimatedCounter";
 import { useSimulatedLoading } from "@/hooks/useSimulatedLoading";
@@ -240,19 +241,7 @@ export function GoalsView() {
               </div>
 
               <div className="px-5 pb-5">
-                <div className="h-2 overflow-hidden rounded-full bg-white/50 dark:bg-white/10">
-                  <motion.div
-                    className="h-full rounded-full bg-gradient-to-r from-[color:var(--chart-bar-from)] to-[color:var(--chart-bar-to)]"
-                    initial={{ width: 0 }}
-                    animate={{ width: `${g.progress}%` }}
-                    transition={{
-                      type: "spring",
-                      stiffness: 72,
-                      damping: 20,
-                      delay: 0.12 + gi * 0.04,
-                    }}
-                  />
-                </div>
+                <ProgressBar value={g.progress} />
               </div>
             </GlassCard>
           </motion.div>

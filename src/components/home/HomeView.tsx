@@ -5,6 +5,7 @@ import { motion } from "framer-motion";
 import { ArrowUpRight, Sparkles } from "lucide-react";
 import type { CardDecoration, GlassTone } from "@/components/ui/GlassCard";
 import { GlassCard } from "@/components/ui/GlassCard";
+import { ProgressBar } from "@/components/ui/ProgressBar";
 import { ProgressRing } from "@/components/ui/ProgressRing";
 import { AnimatedCounter } from "@/components/ui/AnimatedCounter";
 import { Skeleton } from "@/components/ui/Skeleton";
@@ -362,12 +363,7 @@ export function HomeView() {
               <span className="text-fg-subtle">Model confidence</span>
               <span className="tabular-nums text-fg">{confidencePct(personalizedInsight)}%</span>
             </div>
-            <div className="h-1.5 overflow-hidden rounded-full bg-brand-muted/55 dark:bg-white/[0.1]">
-              <div
-                className="h-full rounded-full bg-gradient-to-r from-brand to-amber"
-                style={{ width: `${confidencePct(personalizedInsight)}%` }}
-              />
-            </div>
+            <ProgressBar value={confidencePct(personalizedInsight)} className="h-1.5" />
             <p className="text-[0.6875rem] leading-snug text-fg-subtle">
               <span className="text-fg-muted/90">Based on </span>
               <span className="font-medium text-fg-muted">{personalizedInsight.basedOn}</span>

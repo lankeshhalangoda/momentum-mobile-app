@@ -5,6 +5,7 @@ import Image from "next/image";
 import { motion } from "framer-motion";
 import { useRouter } from "next/navigation";
 import { GlassCard } from "@/components/ui/GlassCard";
+import { ProgressBar } from "@/components/ui/ProgressBar";
 import { Skeleton } from "@/components/ui/Skeleton";
 import { Button } from "@/components/ui/Button";
 import { useSimulatedLoading } from "@/hooks/useSimulatedLoading";
@@ -93,12 +94,7 @@ export function ProfileView() {
               {user.tierXp} / {user.tierXpNext}
             </span>
           </div>
-          <div className="mt-2 h-2 overflow-hidden rounded-full bg-brand-muted/50">
-            <div
-              className="h-full rounded-full bg-gradient-to-r from-brand to-amber"
-              style={{ width: `${(user.tierXp / user.tierXpNext) * 100}%` }}
-            />
-          </div>
+          <ProgressBar value={(user.tierXp / user.tierXpNext) * 100} className="mt-2" />
         </div>
       </header>
 

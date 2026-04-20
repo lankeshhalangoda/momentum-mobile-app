@@ -18,6 +18,7 @@ import { Skeleton } from "@/components/ui/Skeleton";
 import { AnimatedCounter } from "@/components/ui/AnimatedCounter";
 import { Button } from "@/components/ui/Button";
 import { useSimulatedLoading } from "@/hooks/useSimulatedLoading";
+import { ProgressBar } from "@/components/ui/ProgressBar";
 import {
   ambientSounds,
   energyRecommendation,
@@ -164,13 +165,7 @@ export function FocusView() {
           </p>
           <p className="font-sans mt-3 text-sm font-medium text-white/65">Session · {progress}%</p>
 
-          <div className="mt-6 h-2 w-full max-w-xs overflow-hidden rounded-full bg-white/10">
-            <motion.div
-              className="h-full rounded-full bg-gradient-to-r from-[color:var(--chart-bar-from)] to-[color:var(--chart-bar-to)]"
-              animate={{ width: `${progress}%` }}
-              transition={{ type: "spring", stiffness: 110, damping: 22 }}
-            />
-          </div>
+          <ProgressBar value={progress} className="mt-6 w-full max-w-xs" />
 
           <div className="mt-9 flex w-full max-w-sm flex-wrap items-center justify-center gap-3">
             {!running ? (
@@ -178,15 +173,19 @@ export function FocusView() {
                 Start session
               </Button>
             ) : (
-              <Button type="button" variant="secondary" size="md" className="min-w-[9.5rem]" onClick={pause}>
+              <Button type="button" variant="primary" size="md" className="min-w-[9.5rem]" onClick={pause}>
                 Pause
               </Button>
             )}
-            <Button type="button" variant="quiet" size="md" onClick={reset}>
-              Reset
-            </Button>
-            <Button type="button" variant="ghost" size="md" className="text-white/90 hover:text-white" onClick={() => setZen(true)}>
-              Distraction-free
+            <Button
+              type="button"
+              variant="ghost"
+              size="md"
+              className="!border !border-black/15 !bg-white !text-black hover:!border-brand/45 hover:!bg-brand hover:!text-black dark:!text-black dark:hover:!text-black [&_*]:!text-black"
+              style={{ color: "#000000" }}
+              onClick={reset}
+            >
+              <span className="text-black">Reset</span>
             </Button>
           </div>
         </div>
@@ -209,12 +208,7 @@ export function FocusView() {
               </div>
             </div>
           </div>
-          <div className="mt-5 h-2 overflow-hidden rounded-full bg-brand-muted/50">
-            <div
-              className="h-full rounded-full bg-gradient-to-r from-brand to-amber/90"
-              style={{ width: `${weeklyProgressPct}%` }}
-            />
-          </div>
+          <ProgressBar value={weeklyProgressPct} className="mt-5" />
           <p className="mt-2 text-[0.6875rem] font-medium text-fg-subtle">Daily load (min)</p>
           <MiniSparkline values={focusDashboard.weekFocusMinutesDaily} height={48} className="mt-2 w-full" />
         </GlassCard>
@@ -284,12 +278,7 @@ export function FocusView() {
                 <span>Session quality</span>
                 <span className="tabular-nums text-fg">{focusDashboard.sessionQualityPct}%</span>
               </div>
-              <div className="mt-1.5 h-2 overflow-hidden rounded-full bg-white/50 dark:bg-white/10">
-                <div
-                  className="h-full rounded-full bg-gradient-to-r from-[color:var(--chart-bar-from)] to-amber/90"
-                  style={{ width: `${focusDashboard.sessionQualityPct}%` }}
-                />
-              </div>
+              <ProgressBar value={focusDashboard.sessionQualityPct} className="mt-1.5" />
               <div className="mt-2 flex flex-wrap gap-2">
                 <span className="rounded-full border border-border/50 bg-white/45 px-2 py-0.5 text-[0.625rem] font-semibold text-fg-muted dark:bg-white/10">
                   Cohort {focusDashboard.cohortAvgQualityPct}%

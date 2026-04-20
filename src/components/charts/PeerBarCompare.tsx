@@ -1,6 +1,7 @@
 "use client";
 
 import { cn } from "@/lib/utils";
+import { ProgressBar } from "@/components/ui/ProgressBar";
 
 type PeerBarCompareProps = {
   selfPct: number;
@@ -25,24 +26,14 @@ export function PeerBarCompare({ selfPct, peerPct, className }: PeerBarComparePr
             <span>Progress</span>
             <span className="tabular-nums text-brand">{a}%</span>
           </div>
-          <div className="h-2.5 overflow-hidden rounded-full bg-white/60 dark:bg-white/10">
-            <div
-              className="h-full rounded-full bg-gradient-to-r from-[color:var(--chart-bar-from)] to-[color:var(--chart-bar-to)]"
-              style={{ width: `${a}%` }}
-            />
-          </div>
+          <ProgressBar value={a} className="h-2.5" />
         </div>
         <div>
-          <div className="mb-1 flex justify-between text-xs font-medium text-fg-muted">
+          <div className="mb-1 flex justify-between text-xs font-medium text-fg">
             <span>Avg peer</span>
             <span className="tabular-nums text-amber">{b}%</span>
           </div>
-          <div className="h-2.5 overflow-hidden rounded-full bg-white/60 dark:bg-white/10">
-            <div
-              className="h-full rounded-full bg-gradient-to-r from-brand/85 to-amber/70"
-              style={{ width: `${b}%` }}
-            />
-          </div>
+          <ProgressBar value={b} className="h-2.5" />
         </div>
       </div>
     </div>
